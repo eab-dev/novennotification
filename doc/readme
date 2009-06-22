@@ -1,0 +1,22 @@
+2009 Jean-Luc Nguyen, Noven
+
+1/ Introduction
+
+This extension allows to display notification for a user on the back-office interface.
+
+2/ Installation
+
+* Download the compressed file under /extension directory and uncompress it.
+* Activate the extension.
+
+3/ Configuration
+
+Edit the configuration file, which is defined in /extension/novennotification/setting/novennotification.ini
+    - UserGroupNodeIDs is the node array for the groups users to display
+    - Limit is the number of users to display on the list
+
+4/ How to Use 
+
+* You should have a new tab on the backoffice.
+* Select the group users you would like to display.
+* You may display the notification user details by clicking on the details link.
