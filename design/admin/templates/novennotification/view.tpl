@@ -7,8 +7,6 @@
     $alerte_type_title_prec = ''
     $subscribed_nodes_count=$subscribed_nodes|count
 }
-{include uri="design:novennotification/no_left_menu.tpl"}
-
 
 {* DESIGN: Header START *}
 <div class="novennotification-header">

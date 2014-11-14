@@ -2,8 +2,6 @@
 
 {def $subscribed_nodes_count=$subscribed_nodes|count}
 
-{include uri="design:no_left_menu.tpl"}
-
 {* DESIGN: Header START *}
 <div class="box-header">
 	<div class="box-tc">

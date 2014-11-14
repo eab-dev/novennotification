@@ -78,6 +78,7 @@ $tpl->setVariable('uri', $currentURI);
 $tpl->setVariable( 'selectedGroup', $selectedGroup );
 
 $Result['content'] = $tpl->fetch( "design:novennotification/list.tpl" );
+$Result['left_menu'] = "design:parts/novennotification/menu.tpl";
 $Result['path'] = array(
-                        array(  'url'   => false,
-                                'text'  => ezpI18n::tr( 'extension/novennotification', 'Users notification settings' ) ) );
+                        array(  'url'   => false, 'text'  => ezpI18n::tr( 'extension/novennotification', 'Users notification settings' ) )
+		);

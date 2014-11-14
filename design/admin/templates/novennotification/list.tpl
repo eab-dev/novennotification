@@ -1,6 +1,3 @@
-{include uri="design:novennotification/no_left_menu.tpl"}
-
-
 {* DESIGN: Header START *}
 <div class="novennotification-header">
 	<div class="box-tc">

@@ -51,6 +51,8 @@ if ( $Params['UserID'] )
 }
 
 $Result['content'] = $tpl->fetch( "design:novennotification/view.tpl" );
+$Result['left_menu'] = "design:parts/novennotification/menu.tpl";
 $Result['path'] = array(
-                        array(  'url'   =>false,
-                                'text'  => ezpI18n::tr( 'extension/novennotification', 'Users notification settings' ) ) );
+                        array(  'url'   => '/notificationcontrol/list', 'text'  => ezpI18n::tr( 'extension/novennotification', 'Users notification settings' ) ),
+			array(  'url'   => false, 'text'  => $user->Email )
+		);
