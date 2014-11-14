@@ -3,6 +3,19 @@
 [NavigationPart]
 Part[notificationcontrolnavigationpart]=Noven: users notification settings
 
+[LeftAdminMenu]
+Tabs[]=notificationcontrol
+
+[Leftmenu_notificationcontrol]
+Enabled[]
+Enabled[default]=true
+Enabled[browse]=true
+Shown[]
+Shown[default]=true
+Shown[navigation]=true
+Shown[browse]=true
+
+
 [TopAdminMenu]
 Tabs[]=notificationcontrol
 
