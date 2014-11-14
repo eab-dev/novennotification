@@ -10,7 +10,7 @@
 
 
 {* DESIGN: Header START *}
-<div class="box-header">
+<div class="box-header" style="width:650px; display:block;float:right;">
 	<div class="box-tc">
 		<div class="box-ml">
 			<div class="box-mr">
@@ -29,7 +29,7 @@
 </div>
 
 {* DESIGN: Content START *}
-<div class="box-ml">
+<div class="box-ml" style="width:650px; display:block;float:right;">
 	<div class="box-mr">
 		<div class="box-content">
 			<div class="context-attributes">
@@ -66,7 +66,9 @@
 	</div>
 </div>
 
-<div class="controlbar">
+
+
+<div class="controlbar" style="width:650px; display:block;float:right;">
 	<div class="box-bc">
 		<div class="box-ml">
 			<div class="box-mr">
