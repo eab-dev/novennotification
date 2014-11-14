@@ -1,6 +1,6 @@
 {def $ancestor = fetch('content','node',hash('node_id',5))}
 
-<div style="position:absolute; left:5px; top:150px; width:150px;">
+<div style="width:150px;">
 	<ul>
 	{foreach $ancestor.children as $eachone}
 		{if $eachone.class_identifier|eq('user_group')}

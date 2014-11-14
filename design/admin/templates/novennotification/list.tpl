@@ -1,4 +1,4 @@
-{include uri="design:noveniniupdate/no_left_menu.tpl"}
+{include uri="design:novennotification/no_left_menu.tpl"}
 
 
 {* DESIGN: Header START *}
