@@ -30,7 +30,7 @@
 					<p>{'Please select the group to display'|i18n('extension/novennotification/list')}</p>
 					<br />
 				    <div class="element">
-				        <select name="selectedGroup" onchange="window.location.href='/novennotification/list/(group)/'+this.value+'/(offset)/0';">
+				        <select name="selectedGroup" onchange="window.location.href='/notificationcontrol/list/(group)/'+this.value+'/(offset)/0';">
 				        	{def $gNode = ""}
 							{foreach $groupNodeIDs as $gNodeID}
 								{set $gNode = fetch( 'content', 'node', hash( 'node_id', $gNodeID ) )}
@@ -96,13 +96,16 @@
 					    </tr>
 					    {foreach $users as $user sequence array('bgdark', 'bglight') as $seq}
 			       		<tr valign="top" class="{$seq}">
-				            <td width="33%">{$user.name}</td>
+				            <td width="33%">
+					    {if $user.class_identifier|eq('user_group')}<a href={concat('notificationcontrol/list/(group)/', $user.node_id, '/(offset)/0')|ezurl}>{$user.name}</a>{else}{$user.name}{/if}</td>
 				            <td width="33%">{$user.data_map.user_account.content.login}</td>
 				            <td width="33%"><a href="mailto:{$user.data_map.user_account.content.email}">{$user.data_map.user_account.content.email}</a></td>
 				            <td width="1">
-					            <a href={concat('novennotification/view/(user)/', $user.contentobject_id)|ezurl} title="{'View notification user'|i18n('extension/novennotification/list')}">
-	                        		<img src={"share/icons/crystal-admin/16x16_indexed/mimetypes/empty.png"|ezroot} alt="{'View notification user'|i18n('extension/novennotification/list')}" />
-	                        	</a>
+							{if $user.class_identifier|ne('user_group')}
+								<a href={concat('notificationcontrol/view/(user)/', $user.contentobject_id)|ezurl} title="{'View notifications for this user'|i18n('extension/novennotification/list')}">
+									<img src={"share/icons/crystal-admin/16x16_indexed/mimetypes/empty.png"|ezroot} alt="{'View notifications for this user'|i18n('extension/novennotification/list')}" />
+								</a>
+							{/if}
 				            </td>
 				        </tr>
 				    	{/foreach}
