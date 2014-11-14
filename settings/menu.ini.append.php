@@ -16,6 +16,10 @@ Shown[navigation]=true
 Shown[browse]=true
 
 
+[Leftmenu_user]
+Name=More user-related information
+LinkNames[notificationcontrol]=Users notifications
+Links[notificationcontrol]=notificationcontrol/list
 [TopAdminMenu]
 Tabs[]=notificationcontrol
 
