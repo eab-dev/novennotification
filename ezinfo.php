@@ -39,8 +39,8 @@ class novenNotification
     {
         return array(
             'Name' => "Noven Notification",
-            'Version' => "1.0.0",
-            'Copyright' => "Copyright Â© 2009 Jean-Luc Nguyen, Noven.",
+            'Version' => "1.1.0",
+            'Copyright' => "Copyright © 2009 Jean-Luc Nguyen, Noven.",
             'Info_url' => "http://projects.ez.no/novennotification",
             'License' => "GNU General Public License v2.0",
         );
