@@ -3,4 +3,7 @@
 [ExtensionSettings]
 DesignExtensions[]=novennotification
 
-*/
+[StylesheetSettings]
+BackendCSSFileList[]=novennotification.css
+
+*/ ?>

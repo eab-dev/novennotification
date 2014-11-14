@@ -11,7 +11,7 @@
 
 
 {* DESIGN: Header START *}
-<div class="box-header" style="width:650px; display:block;float:right;">
+<div class="novennotification-header">
 	<div class="box-tc">
 		<div class="box-ml">
 			<div class="box-mr">
@@ -30,7 +30,7 @@
 </div>
 
 {* DESIGN: Content START *}
-<div class="box-ml" style="width:650px; display:block;float:right;">
+<div class="novennotification-content">
 	<div class="box-mr">
 		<div class="box-content">
 			<div class="context-attributes">
@@ -75,7 +75,7 @@
      $remain_count = sub($subscribed_nodes_count,$remove_count)
 }
 
-<div class="buttonblock" style="margin-top:15px; width:650px; display:block;float:right;"  >
+<div class="novennotification-buttonblock">
 {if $subscribed_nodes_count}
 <input class="button" type="submit" name="RemoveRule_{$remove_id}" value="{'Remove selected'|i18n( 'design/admin/templates/novennotification/view' )}" />
 {/if}
@@ -96,7 +96,7 @@
 
 
 
-<div class="controlbar" style="width:650px; display:block;float:right;">
+<div class="novennotification-controlbar">
 	<div class="box-bc">
 		<div class="box-ml">
 			<div class="box-mr">

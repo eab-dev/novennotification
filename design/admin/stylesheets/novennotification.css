@@ -1,0 +1,23 @@
+div.novennotification-header,
+div.novennotification-content,
+div.novennotification-controlbar {
+	min-width:650px;
+	display:block;
+	float:right;
+	width:105%;
+}
+
+div.novennotification-leftmenu {
+	position:absolute;
+	left:5px;
+	top:150px;
+	width:147px;
+}
+
+div.novennotification-buttonblock {
+	min-width:650px;
+	display:block;
+	float:right;
+	margin-top:15px;
+	width:100%;
+}
