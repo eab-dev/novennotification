@@ -1,17 +1,17 @@
 <?php /* #?ini charset="utf-8"?
 
 [NavigationPart]
-Part[novennotificationnavigationpart]=Noven: users notification settings
+Part[notificationcontrolnavigationpart]=Noven: users notification settings
 
 [TopAdminMenu]
-Tabs[]=novennotification
+Tabs[]=notificationcontrol
 
-[Topmenu_novennotification]
-NavigationPartIdentifier=novennotificationnavigationpart
-Name=Users notification settings
-Tooltip=Cette extension affiche les paramètres de notification des utilisateurs
+[Topmenu_notificationcontrol]
+NavigationPartIdentifier=notificationcontrolnavigationpart
+Name=Users notifications
+Tooltip=Examine or delete other users' notifications
 URL[]
-URL[default]=novennotification/list
+URL[default]=notificationcontrol/list
 Enabled[]
 Enabled[default]=true
 Enabled[browse]=false

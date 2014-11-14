@@ -2,6 +2,6 @@
 
 [ModuleSettings]
 ExtensionRepositories[]=novennotification
-ModuleList[]=novennotification
+ModuleList[]=notificationcontrol
 
 */ ?>
