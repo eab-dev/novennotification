@@ -44,13 +44,15 @@ if ( $Params['UserID'] )
 
     if ( isset( $availableHandlers[ 'ezgeneraldigest' ] ))
     {
-        if ( $http->hasPostVariable( 'Store' ))
-            storeDigestSettings( $http, $user );
+        $digestHandler = new eZGeneralDigestHandler();
+        $settings = $digestHandler->settings( $user );
 
-        $digestHandler = new eZGeneralDigestHandler;
-        $digestHandler->settings = eZGeneralDigestHandler::settings( $user );
+        if ( $http->hasPostVariable( 'Store' )) {
+            storeDigestSettings( $http, $settings );
+        }
+
         $tpl->setVariable( 'digest_handler', $digestHandler );
-        $tpl->setVariable( 'digest_settings', $digestHandler->settings );
+        $tpl->setVariable( 'digest_settings', $settings );
     }
 
     if ( $http->hasPostVariable( 'SelectedRuleIDArray_' . eZSubTreeHandler::NOTIFICATION_HANDLER_ID ) )
@@ -78,10 +80,8 @@ $Result['path'] = array(
 			array(  'url'   => false, 'text'  => $user->Email )
 		);
 
-function storeDigestSettings( $http, $user )
+function storeDigestSettings( $http, $settings )
 {
-    $settings = eZGeneralDigestHandler::settings( $user );
-
     if ( $http->hasPostVariable( 'ReceiveDigest_' . eZGeneralDigestHandler::NOTIFICATION_HANDLER_ID ) &&
          $http->hasPostVariable( 'ReceiveDigest_' . eZGeneralDigestHandler::NOTIFICATION_HANDLER_ID ) == '1' )
     {
