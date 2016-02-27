@@ -32,22 +32,43 @@ $tpl = eZTemplate::factory();
 
 if ( $Params['UserID'] )
 {
-	$userContentObjectID = $Params['UserID'];
-	$user = eZUser::fetch($userContentObjectID);
-	$tpl->setVariable('user', $user);
+    $userContentObjectID = $Params['UserID'];
+    $user = eZUser::fetch($userContentObjectID);
 
-	$nodeIDlist = $_POST['SelectedRuleIDArray_ezsubtree'];
-	//$nodeIDlist = $http->postVariable( 'SelectedRuleIDArray_ezsubtree' );
+    $db = eZDB::instance();
+    $db->begin();
 
-	foreach( $nodeIDlist as $nodeID )
-	{
-		$RemoveID = eZSubtreeNotificationRule::removeByNodeAndUserID($userContentObjectID, $nodeID );
-		$tpl->setVariable('remove_id', $RemoveID);
-	}
+    $availableHandlers = eZNotificationEventFilter::availableHandlers();
 
-	$tpl->setVariable('nodelist', $nodeIDlist);
-	$subscribedNodes = eZSubTreeHandler::rules( $user, 0, 500 );
-	$tpl->setVariable('subscribed_nodes', $subscribedNodes);
+    $tpl->setVariable('user', $user);
+
+    if ( isset( $availableHandlers[ 'ezgeneraldigest' ] ))
+    {
+        if ( $http->hasPostVariable( 'Store' ))
+            storeDigestSettings( $http, $user );
+
+        $digestHandler = new eZGeneralDigestHandler;
+        $digestHandler->settings = eZGeneralDigestHandler::settings( $user );
+        $tpl->setVariable( 'digest_handler', $digestHandler );
+        $tpl->setVariable( 'digest_settings', $digestHandler->settings );
+    }
+
+    if ( $http->hasPostVariable( 'SelectedRuleIDArray_' . eZSubTreeHandler::NOTIFICATION_HANDLER_ID ) )
+    {
+        $removeNodeIDList = $http->postVariable( 'SelectedRuleIDArray_' . eZSubTreeHandler::NOTIFICATION_HANDLER_ID );
+        foreach( $removeNodeIDList as $nodeID )
+            eZSubtreeNotificationRule::removeByNodeAndUserID($userContentObjectID, $nodeID );
+        $tpl->setVariable( 'remove_count', count( $removeNodeIDList ));
+    }
+    else
+        $tpl->setVariable( 'remove_count', 0 );
+
+     $db->commit();
+
+    $tpl->setVariable('remove_id', eZSubTreeHandler::NOTIFICATION_HANDLER_ID );
+    $subscribedNodes = eZSubTreeHandler::rules( $user, 0, 500 );
+    $tpl->setVariable('subscribed_nodes', $subscribedNodes );
+    $tpl->setVariable('subscribed_nodes_count', count( $subscribedNodes ));
 }
 
 $Result['content'] = $tpl->fetch( "design:novennotification/view.tpl" );
@@ -56,3 +77,31 @@ $Result['path'] = array(
                         array(  'url'   => '/notificationcontrol/list', 'text'  => ezpI18n::tr( 'extension/novennotification', 'Users notification settings' ) ),
 			array(  'url'   => false, 'text'  => $user->Email )
 		);
+
+function storeDigestSettings( $http, $user )
+{
+    $settings = eZGeneralDigestHandler::settings( $user );
+
+    if ( $http->hasPostVariable( 'ReceiveDigest_' . eZGeneralDigestHandler::NOTIFICATION_HANDLER_ID ) &&
+         $http->hasPostVariable( 'ReceiveDigest_' . eZGeneralDigestHandler::NOTIFICATION_HANDLER_ID ) == '1' )
+    {
+        $settings->setAttribute( 'receive_digest', 1 );
+        $digestType = $http->postVariable( 'DigestType_' . eZGeneralDigestHandler::NOTIFICATION_HANDLER_ID );
+        $settings->setAttribute( 'digest_type', $digestType );
+        if ( $digestType == 1 )
+        {
+            $settings->setAttribute( 'day', $http->postVariable( 'Weekday_' . eZGeneralDigestHandler::NOTIFICATION_HANDLER_ID ) );
+        }
+        else if ( $digestType == 2 )
+        {
+            $settings->setAttribute( 'day', $http->postVariable( 'Monthday_' . eZGeneralDigestHandler::NOTIFICATION_HANDLER_ID ) );
+        }
+        $settings->setAttribute( 'time', $http->postVariable( 'Time_' . eZGeneralDigestHandler::NOTIFICATION_HANDLER_ID ) );
+        $settings->store();
+    }
+    else
+    {
+        $settings->setAttribute( 'receive_digest', 0 );
+        $settings->store();
+    }
+}
