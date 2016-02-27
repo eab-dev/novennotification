@@ -1,0 +1,22 @@
+{
+    "name": "eab/novennotification",
+    "description": "eZ Publish 4 extension to display or delete notifications for users",
+    "type": "ezpublish-legacy-extension",
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "Jean-Luc Nguyen",
+            "homepage": "http://projects.ez.no/novennotification"
+        },
+        {
+            "name": "Andy Caiger",
+            "homepage": "http://www.eab.co.uk"
+        }
+    ],
+    "require": {
+        "ezsystems/ezpublish-legacy-installer": "*"
+    },
+    "extra": {
+        "ezpublish-legacy-extension-name": "novennotification"
+    }
+}

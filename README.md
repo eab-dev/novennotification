@@ -15,28 +15,32 @@ This extension is provided as is, completely free of use and charge.
 Copyright
 ---------
 Originally by 2009 Jean-Luc Nguyen, Noven
-Modifications 2012-2014 by [Andy Caiger](http://eab.uk/ac)
+Modifications 2012-2016 by [Andy Caiger](http://eab.uk/ac)
 
 License
 -------
 [GNU General Public License v2.0](www.gnu.org/licenses/gpl-2.0.html)
 
 Installation
------------
-Use `git clone https://github.com/eab-dev/novennotification.git` or download and uncompress the archive in your eZ Publish `extension/` folder.
-Activate the extension:
+------------
+The quickest way is to use composer:
 
-1. Copy the `novennotification` folder to the `extension` folder.
+    composer --update-no-dev --prefer-dist eab/novennotification
 
-2. Edit `settings/override/site.ini.append.php`
+Or using git:
 
-3. Under `[ExtensionSettings]` add:
+    cd extension
+    git clone https://github.com/eab-dev/novennotification.git extension/novennotification
 
-        ActiveExtensions[]=novennotification
+If you install using git you'll need to manually activate the extension by
+editing `settings/override/site.ini.append.php`. Under `[ExtensionSettings]`
+add:
 
-4. Clear the cache:
+    ActiveExtensions[]=novennotification
 
-        bin/php/ezcache.php --clear-all
+Clear the cache:
+
+    bin/php/ezcache.php --clear-all
 
 Configuration
 -------------
@@ -49,5 +53,3 @@ Usage
 * You should have a new menu entry under the 'User accounts' tab in the admin interface.
 * Select the user group you would like to display.
 * You may display or delete an individual user's details by clicking on the details link.
-
-
